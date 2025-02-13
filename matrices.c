@@ -1,7 +1,7 @@
 /* Fecha 29 01 2025
    Autor: Jeronimo Chaparro Tenorio
    Tema: Programacion modular, complejidad algoritmica en C
-   Materia: Estructuras de Datos
+   Materia: Sistemas Operativos
 */
 
 #include <stdio.h>
