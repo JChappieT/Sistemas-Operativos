@@ -1,25 +1,26 @@
-/* Fecha 29 01 2025
+/**********************************************************
+ Fecha 13 02 2025
    Autor: Jeronimo Chaparro Tenorio
-   Tema: Programacion modular, complejidad algoritmica en C
+   Tema: Programacion modular, Memoria Dinamica
    Materia: Sistemas Operativos
-*/
+   PONTIFICIA UNIVERSIDAD JAVERIANA
+***********************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
-// Función para inicializar las matrices
+// Función para inicializar las matrices, asignacion de memoria
 void iniMatriz(int **a, int **b, int **c, int n) {
     srand(time(0));
     for (int i = 0; i < n; i++) {
         a[i] = (int *)malloc(n * sizeof(int));
         b[i] = (int *)malloc(n * sizeof(int));
-        c[i] = (int *)malloc(n * sizeof(int));
+        c[i] = (int *)calloc(n, sizeof(int));
         
         for (int j = 0; j < n; j++) {
             a[i][j] = rand() % 51;
             b[i][j] = rand() % 51;
-            c[i][j] = 0;
         }
     }
 }
@@ -34,7 +35,7 @@ void mostrMatrices(int **a, int n) {
     }
 }
 
-// Función para multiplicar matrices
+// Función para multiplicar matrices algoritmo clasico
 void multiMatrices(int **a, int **b, int **c, int n) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -52,11 +53,12 @@ int main(int argc, char *argv[]) {
         printf("Uso: %s <tamaño de la matriz>\n", argv[0]);
         return 1;
     }
-
+    //Tomar el argumento para el tamaño de las matrices brindado por el usuario
     int n = atoi(argv[1]);
+    /*CREACION DE LAS MATRICES*/
     int **mA = (int **)malloc(n * sizeof(int *));
     int **mB = (int **)malloc(n * sizeof(int *));
-    int **mC = (int **)malloc(n * sizeof(int *));
+    int **mC = (int **)calloc(n, sizeof(int *));
 
     iniMatriz(mA, mB, mC, n);
     
