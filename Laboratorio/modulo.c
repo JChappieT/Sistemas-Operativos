@@ -28,12 +28,15 @@ void iniMatriz(int **a, int **b, int **c, int n) {
 
 // Función para mostrar las matrices
 void mostrMatrices(int **a, int n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            printf("%d ", a[i][j]);
+    if(n<6){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                printf("%d ", a[i][j]);
+            }
+            printf("\n");
         }
-        printf("\n");
     }
+    
 }
 
 // Función para multiplicar matrices algoritmo clasico
@@ -60,3 +63,5 @@ void eliminarMemoria(int **a, int **b, int **c, int n){
     free(b);
     free(c);
 }
+
+
