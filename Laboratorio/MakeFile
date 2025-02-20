@@ -1,0 +1,10 @@
+GCC = gcc 
+FLAGS = -lm
+
+PROGRAMAS = matrizm 
+
+matrizm: 
+	$(GCC) modulo.c $@.c -o $@
+
+clear:
+	$(RM) $(PROGRAMAS)
