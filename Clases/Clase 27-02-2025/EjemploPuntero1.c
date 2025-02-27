@@ -1,4 +1,11 @@
-
+/**********************************************************
+ Fecha 27 02 2025
+   Autor: Jeronimo Chaparro Tenorio
+   Tema: Apuntadores
+   Materia: Sistemas Operativos
+   
+   PONTIFICIA UNIVERSIDAD JAVERIANA
+***********************************************************/
 #include <stdio.h>
 #include <stdlib.h> //de aqui viene la funcion printf
 
