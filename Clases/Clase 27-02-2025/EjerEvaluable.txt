@@ -1,0 +1,4 @@
+El archivo tiene el nombre de EjerEvaluable y se encuantra en la carpeta Clase 27-02-2025 que esta dentro de la carpeta Clases.
+A la hora de ejecutar el ejecutable se deben ingresar 5 numeros como argumento siendo los primers 3 enteros y los ultimos 2 double ej:
+./ejeutable 4 3 5 2.5 6.2
+https://github.com/JChappieT/Sistemas-Operativos
