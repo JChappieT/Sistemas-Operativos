@@ -34,17 +34,19 @@ int main(int argc, char *argv[]){
 
   
   int perimetroC= 2*a +2*b;
+  int areaC= a*b;
   double areaCirc= 3.1416*c*c;
   double promedioNDoubles= (d+e)/2;
 
-  printf("El primer y segundo numero ingresado son los lados de un cuadrado %d \t %d \n", a, b);
-  printf("El perimetro del cuadrado es: %d \n", perimetroC);
+  printf("El primer y segundo numero ingresado la base y la altura de un rectangulo \n Numeros: %d y %d \n", a, b);
+  printf("El perimetro del rectangulo es: %d \n", perimetroC);
+  printf("El area del rectangulo es: %d \n", areaC);
 
-  printf("El tercer numero ingresado es el radio de un circulo %d \n", c);
+  printf("\nEl tercer numero ingresado es el radio de un circulo \n Radio: %d \n", c);
   printf("El area del circulo es: %f \n", areaCirc);
 
-  printf("Con los Ultimos dos numeros ingresados se calculara un promedio %f \t %f \n", d, e);
-  printf("El primedio entre los dos numero es: %f \n", promedioNDoubles);
+  printf("\nCon los Ultimos dos numeros double ingresados se calculara un promedio \n Numeros: %f y %f \n", d, e);
+  printf("El promedio entre los dos numero es: %f \n", promedioNDoubles);
 
   return 0;
 
