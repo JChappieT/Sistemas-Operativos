@@ -16,6 +16,8 @@
 int main() {
     int n, opcion;
     bool aprovado=false;
+    //Vector
+    vectorDinamico editor;
     printf("=========================================\n");
     printf("||                                     ||\n");
     printf("||       BIENVENIDO AL PROCESO         ||\n");
@@ -115,6 +117,22 @@ int main() {
                 getchar(); // Esperar la tecla
                 break;
             case 4:
+                vectorInicio(&editor);
+                printf("Vector inicializado correctamente.\n");
+                break;
+            case 5:
+                char palabra[50];  // Espacio para 50 caracteres
+                printf("Ingrese la palabra que desea ingresar al vector:\n");
+                scanf("%49s", &palabra);
+                addVector(&editor, palabra);
+                printf("El vector queda de la siguiente forma:\n");
+                for (int i = 0; i < totalVector(&editor); i++)
+                printf("%s", (char *) getVector(&editor, i));
+                break;
+            case 6:
+                printf("Saliendo...\n");
+                break;
+            case 7:
                 printf("Saliendo...\n");
                 break;
             default:
@@ -125,14 +143,12 @@ int main() {
     // Liberar memoria
     eliminarMemoria(mA, mB, mC, n);
 
-    vectorDinamico editor;
-    vectorInicio(&editor);
+    
+    
 
-    addVector(&editor, "Hola");
-    addVector(&editor, "Profesional");
+    
 
-    for (int i = 0; i < totalVector(&editor); i++)
-    printf("%s", (char *) getVector(&editor, n));
+    
 
     borrarVector(&editor, 1);
 
@@ -140,7 +156,7 @@ int main() {
 
 
     for (int i = 0; i < totalVector(&editor); i++)
-    printf("%s ", (char *) getVector(&editor, n));
+    printf("%s ", (char *) getVector(&editor, i));
 
     return 0;
 }
