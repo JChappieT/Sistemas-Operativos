@@ -125,5 +125,22 @@ int main() {
     // Liberar memoria
     eliminarMemoria(mA, mB, mC, n);
 
+    vectorDinamico editor;
+    vectorInicio(&editor);
+
+    addVector(&editor, "Hola");
+    addVector(&editor, "Profesional");
+
+    for (int i = 0; i < totalVector(&editor); i++)
+    printf("%s", (char *) getVector(&editor, n));
+
+    borrarVector(&editor, 1);
+
+    setVector(&editor, 1, "Buenos");
+
+
+    for (int i = 0; i < totalVector(&editor); i++)
+    printf("%s ", (char *) getVector(&editor, n));
+
     return 0;
 }

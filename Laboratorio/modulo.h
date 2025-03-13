@@ -26,4 +26,20 @@ void multiMatrices(int **a, int **b, int **c, int n);
 /*Funcion para liberar memoria*/
 void eliminarMemoria(int **a, int **b, int **c, int n);
 
+#define CAPACIDAD_INICIAL 4
+
+typedef struct {
+    int capacidad;
+    int totalElementos;
+    void **elementos;
+} vectorDinamico;
+
+void vectorInicio(vectorDinamico *V);
+int totalVector(vectorDinamico *V);
+void addVector(vectorDinamico *V, void *elemento);
+void freeVector(vectorDinamico *V);
+void *getVector(vectorDinamico *V, int indice);
+void setVector(vectorDinamico *V, int indice, void *elemento);
+void borrarVector(vectorDinamico *V, int indice);
+
 #endif
