@@ -21,3 +21,7 @@ clean:
 
 run: $(TARGET)
 	./$(TARGET)
+	
+#make        # Compila el programa
+#make run    # Ejecuta el programa
+#make clean  # Limpia los archivos generados
