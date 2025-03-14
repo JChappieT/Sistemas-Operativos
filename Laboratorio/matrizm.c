@@ -22,6 +22,7 @@ int main() {
     printf("||                                     ||\n");
     printf("||       BIENVENIDO AL PROCESO         ||\n");
     printf("||   DE GESTION DE MATRICES CUADRADAS  ||\n");
+    printf("||        Y VECTORES DINAMICOS         ||\n");
     printf("||                                     ||\n");
     printf("||         Desarrollado por:           ||\n");
     printf("||     Jeronimo Chaparro Tenorio       ||\n");
@@ -30,7 +31,7 @@ int main() {
  
     //Se solicita el tamaño que van a tener las matrices cuadradas
     do{
-        printf("Ingrese el tamano de la matriz (debe ser menor o igual a 5): ");
+        printf("Ingrese el tamano de la matriz (debe ser menor o igual a 5): \n");
         scanf("%d", &n);
         if(n<=5){
             aprovado=true;
@@ -38,11 +39,16 @@ int main() {
             printf("El tamano ingresado es mayor que 5, por favor ingresar un tamano valido\n");
         }
     }while(!aprovado);
+    system("cls");
     
     //Banderas para saber si estan inicializadas las matrices y se multiplicaron
      bool iniM = false;
      bool multiM = false;
 
+    //Bandera para saber si se inicializo el vector
+     bool iniV= false;
+    // Arreglo de caracteres para ingresar palabras al vector
+     char palabra[50];
     //Creacion de variables para medir el tiempo de ejecucion
     clock_t inicio;
     double tiempo_usado;
@@ -57,10 +63,15 @@ int main() {
         printf("||     1. Inicializar matrices                                                  ||\n");
         printf("||     2. Multiplicar matrices                                                  ||\n");
         printf("||     3. Mostrar matrices                                                      ||\n");
-        printf("||     4. Salir                                                                 ||\n");
+        printf("||     4. Inicializar Vector                                                    ||\n");
+        printf("||     5. Agregar palabra al final del vector                                   ||\n");
+        printf("||     6. Agregar palabra en un espacio especifico del vector                   ||\n");
+        printf("||     7. Salir                                                                 ||\n");
         printf("||                                                                              ||\n");
-        printf("|| Recordatorio: para ejecutar la opcion 2 se debe primero ejecutar la opcion 1 ||\n");
-        printf("|| y para ejecutar la opcion 3 se deben ejecutar primero las opciones 1 y 2     ||\n");
+        printf("|| Recordatorio: Para ejecutar la opcion 2 se debe primero ejecutar la opcion 1 ||\n");
+        printf("|| y para ejecutar la opcion 3 se deben ejecutar primero las opciones 1 y 2.    ||\n");
+        printf("|| Recordatorio 2: Para ejecutar la opcion 5 y 6 se debe primero ejecutar la    ||\n");
+        printf("|| opcion 4.                                                                    ||\n");
         printf("=================================================================================\n");
         scanf("%d", &opcion);
 
@@ -75,6 +86,7 @@ int main() {
                 printf("Presione Enter para continuar...\n");
                 while (getchar() != '\n'); // Limpiar el búfer
                 getchar(); // Esperar la tecla
+                system("cls");
                 break;
             case 2:
                 if(!iniM){
@@ -95,6 +107,7 @@ int main() {
                 printf("Presione Enter para continuar...\n");
                 while (getchar() != '\n'); // Limpiar el búfer
                 getchar(); // Esperar la tecla
+                system("cls");
                 break;
             case 3:
                 if(!iniM){
@@ -115,48 +128,70 @@ int main() {
                 printf("Presione Enter para continuar...\n");
                 while (getchar() != '\n'); // Limpiar el búfer
                 getchar(); // Esperar la tecla
+                system("cls");
                 break;
             case 4:
+                system("cls");
                 vectorInicio(&editor);
+                iniV = true;
                 printf("Vector inicializado correctamente.\n");
                 break;
             case 5:
-                char palabra[50];  // Espacio para 50 caracteres
+                system("cls");
+                if(!iniV){
+                    printf("Primero se deben inicializar el vector con la opcion 4\n");
+                    break;
+                }
                 printf("Ingrese la palabra que desea ingresar al vector:\n");
                 scanf("%49s", &palabra);
                 addVector(&editor, palabra);
                 printf("El vector queda de la siguiente forma:\n");
                 for (int i = 0; i < totalVector(&editor); i++)
                 printf("%s", (char *) getVector(&editor, i));
+                //Esperar a que el usuario decida continuar
+                printf("\nPresione Enter para continuar...\n");
+                while (getchar() != '\n'); // Limpiar el búfer
+                getchar(); // Esperar la tecla
+                //Borramos palabra
+                for (int i = 0; i < 50; i++) {
+                    palabra[i] = '\0';
+                }
                 break;
             case 6:
-                printf("Saliendo...\n");
+                system("cls");
+                if(!iniV){
+                    printf("Primero se deben inicializar el vector con la opcion 4\n");
+                    break;
+                }
+                int indice;
+                printf("Ingrese la palabra que desea ingresar al vector:\n");
+                scanf("%49s", &palabra);
+                printf("Ingrese el espacio (numero) en el desea ingresar la palabra:\n");
+                printf("Recuerde que el vector tiene %d espacios\n", totalVector(&editor));
+                scanf("%d", &indice);
+                addVector(&editor, palabra);
+                printf("El vector queda de la siguiente forma:\n");
+                for (int i = 0; i < totalVector(&editor); i++)
+                printf("%s", (char *) getVector(&editor, i));
+                //Esperar a que el usuario decida continuar
+                printf("\nPresione Enter para continuar...\n");
+                while (getchar() != '\n'); // Limpiar el búfer
+                getchar(); // Esperar la tecla
+                
                 break;
             case 7:
+                system("cls");
                 printf("Saliendo...\n");
                 break;
             default:
+                system("cls");
                 printf("Opcion no valida, intente de nuevo.\n");
         }
-    } while (opcion != 4);
+    } while (opcion != 7);
 
     // Liberar memoria
     eliminarMemoria(mA, mB, mC, n);
-
-    
-    
-
-    
-
-    
-
-    borrarVector(&editor, 1);
-
-    setVector(&editor, 1, "Buenos");
-
-
-    for (int i = 0; i < totalVector(&editor); i++)
-    printf("%s ", (char *) getVector(&editor, i));
+    //void freeVector(editor);
 
     return 0;
 }
