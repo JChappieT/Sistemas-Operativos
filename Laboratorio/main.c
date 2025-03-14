@@ -10,7 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "modulo.h"
+#include "matrices.h"
+#include "vector.h"
 #include <stdbool.h>
 
 int main() {

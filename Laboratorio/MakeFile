@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g
 
 # Archivos fuente y objetos
-SRC = matrizm.c modulo.c
+SRC = main.c matrices.c vector.c
 OBJ = $(SRC:.c=.o)
 
 # Ejecutable
