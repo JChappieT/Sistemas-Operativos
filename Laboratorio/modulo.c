@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "modulo.h"
+#include <string.h>
 
 // Función para inicializar las matrices, asignacion de memoria
 void iniMatriz(int **a, int **b, int **c, int n) {
@@ -88,12 +89,16 @@ int totalVector(vectorDinamico *V) {
 void addVector(vectorDinamico *V, void *elemento) {
     if (V->capacidad == V->totalElementos)
         resizeVector(V, V->capacidad * 2);
-    V->elementos[V->totalElementos++] = elemento;
+    V->elementos[V->totalElementos++] = strdup((char *)elemento);
 }
 
 void freeVector(vectorDinamico *V) {
-    free(V->elementos);
+    for (int i = 0; i < V->totalElementos; i++) {
+        free(V->elementos[i]); // Liberar cada palabra
+    }
+    free(V->elementos); // Luego liberar el arreglo de punteros
 }
+
 
 void *getVector(vectorDinamico *V, int indice) {
     if (indice >= 0 && indice < V->totalElementos)
