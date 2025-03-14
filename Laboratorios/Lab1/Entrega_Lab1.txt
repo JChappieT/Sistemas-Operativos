@@ -1,0 +1,2 @@
+Repositorio -> https://github.com/JChappieT/Sistemas-Operativos
+El programa se encuentra en la carpeta Laboratorios y en la carpeta Lab1
