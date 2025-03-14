@@ -1,10 +1,23 @@
-GCC = gcc 
-FLAGS = -lm
+CC = gcc
+CFLAGS = -Wall -g
 
-PROGRAMAS = matrizm 
+# Archivos fuente y objetos
+SRC = matrizm.c modulo.c
+OBJ = $(SRC:.c=.o)
 
-matrizm: 
-	$(GCC) modulo.c $@.c -o $@
+# Ejecutable
+TARGET = programa
 
-clear:
-	$(RM) $(PROGRAMAS)
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(TARGET)
+
+run: $(TARGET)
+	./$(TARGET)
