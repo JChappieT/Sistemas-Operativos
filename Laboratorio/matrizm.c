@@ -1,11 +1,11 @@
-/**********************************************************
- Fecha 20 02 2025
+/***********************************************************************
+ Fecha 14 03 2025
    Autor: Jeronimo Chaparro Tenorio
    Tema: Programacion modular, Memoria Dinamica
    Materia: Sistemas Operativos
-    PROGRAMA PRINCIPAL MULTIPLICACION DE MATRICES
+   PROGRAMA PRINCIPAL MULTIPLICACION DE MATRICES Y VECTORES DINAMICOS
    PONTIFICIA UNIVERSIDAD JAVERIANA
-***********************************************************/
+***********************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
