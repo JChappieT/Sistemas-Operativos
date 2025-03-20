@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
     int x;
     for(x=0; x<1; x++){
         fork();
-        printf("The proces IDD (PID): %d \n", getpid());
+        printf("The proces ID (PID): %d \n", getpid());
     }
     return 0;
 }
