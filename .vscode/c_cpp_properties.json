@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "G:\\C++-C\\mingw64\\bin",  
-                "G:\\C++-C\\mingw64\\include",
+                "G:/C++-C/mingw64/bin",  
+                "G:/C++-C/mingw64/include",
                 "G:/C++-C/usr/include"
             ],
             "defines": [
@@ -13,6 +13,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
+            "compilerPath": "G:/C++-C/mingw64/bin/gcc.exe",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
             "intelliSenseMode": "windows-gcc-x64"
