@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #define FIFO_FILE "/tmp/fifo_twoway"
 int main() {
    int fd;

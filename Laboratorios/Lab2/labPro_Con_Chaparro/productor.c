@@ -9,9 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "biblioteca.h"
 
 #define FIFO_FILE "/tmp/fifo_twoway"
-void reverse_string(char *);
+
 int main() {
    int fd;
    char readbuf[80];
@@ -45,19 +46,3 @@ int main() {
    return 0;
 }
 
-void reverse_string(char *str) {
-   int last, limit, first;
-   char temp;
-   last = strlen(str) - 1;
-   limit = last/2;
-   first = 0;
-   
-   while (first < last) {
-      temp = str[first];
-      str[first] = str[last];
-      str[last] = temp;
-      first++;
-      last--;
-   }
-   return;
-}
