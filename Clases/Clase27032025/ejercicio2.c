@@ -12,8 +12,6 @@
 #include <unistd.h>
 #include <pthread.h>
 
-#define N 5
-
 void *funcion(void *arg){
     printf("FUNCION HILO: INICIO\n");
     sleep(2); //ESPERA 2 SEGUNDOS (dormir)
