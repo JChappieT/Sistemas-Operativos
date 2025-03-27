@@ -9,6 +9,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <fcntl.h>     // Para open()
+#include <sys/types.h> // Para tipos de datos como pid_t
+#include <sys/stat.h>  // 🔹 NECESARIO para S_IFIFO
+#include <unistd.h>    // Para read(), write(), close(), sleep()
 #include "biblioteca.h"
 
 #define FIFO_FILE "/tmp/fifo_twoway"
