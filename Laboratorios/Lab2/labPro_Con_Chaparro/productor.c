@@ -3,7 +3,7 @@
    Autor: Jeronimo Chaparro Tenorio
    Tema: segundo laboratorio
    Materia: Sistemas Operativos
-   LABORATORIO PRODUCTOR CONSUMIDOR Archivo Productor
+   LABORATORIO PARADIGMA PRODUCTOR CONSUMIDOR Archivo Productor
    PONTIFICIA UNIVERSIDAD JAVERIANA
 ***********************************************************************/
 #include <stdio.h>
@@ -15,14 +15,15 @@
 
 int main() {
    int fd;
-   char readbuf[80];
-   char end[10];
+   char readbuf[80]; //Areglo de 80 caracteres max
+   char end[10];     //Areglo de 10 caracteres max
    int to_end;
    int read_bytes;
    
-   /* Create the FIFO if it does not exist */
+   /*Crea el FIFO_FILE si este no existe */
    mkfifo(FIFO_FILE, S_IFIFO|0640);
    strcpy(end, "end");
+   //abre el archivo FIFO_FILE
    fd = open(FIFO_FILE, O_RDWR);
    while(1) {
       read_bytes = read(fd, readbuf, sizeof(readbuf));
