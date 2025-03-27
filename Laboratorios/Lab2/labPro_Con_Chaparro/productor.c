@@ -11,8 +11,8 @@
 #include <string.h>
 #include <fcntl.h>     // Para open()
 #include <sys/types.h> // Para tipos de datos como pid_t
-#include <sys/stat.h>  // 🔹 NECESARIO para S_IFIFO
-#include <unistd.h>    // Para read(), write(), close(), sleep()
+#include <sys/stat.h>  // Para constantes como S_IFIFO
+#include <unistd.h>
 #include "biblioteca.h"
 
 #define FIFO_FILE "/tmp/fifo_twoway"

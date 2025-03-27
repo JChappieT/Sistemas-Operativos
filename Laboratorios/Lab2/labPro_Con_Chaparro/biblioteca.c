@@ -7,6 +7,7 @@
    PONTIFICIA UNIVERSIDAD JAVERIANA
 ***********************************************************************/
 #include "biblioteca.h"
+#define FIFO_FILE "/tmp/fifo_twoway"
 //Función para invertir un vector de caracteres
 void reverse_string(char *str) {
     int last, limit, first;
