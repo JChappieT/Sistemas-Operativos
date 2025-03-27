@@ -1,9 +1,9 @@
-/***********************************************************************
+ /***********************************************************************
  Fecha 27 03 2025
    Autor: Jeronimo Chaparro Tenorio
    Tema: ejercicion Threads
    Materia: Sistemas Operativos
-   Archivo ejercicio.c
+   Archivo ejercicio2.c
    PONTIFICIA UNIVERSIDAD JAVERIANA
 ***********************************************************************/
 #include <stdio.h>
@@ -14,7 +14,9 @@
 
 #define N 5
 
-static void *funcion(void *arg){
+void *funcion(void *arg){
+    printf("FUNCION HILO: INICIO\n");
+    sleep(2);  
     size_t job = *(size_t*)arg;
     printf("Job %zu\n", job);
     return NULL;
