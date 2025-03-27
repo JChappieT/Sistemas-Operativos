@@ -12,7 +12,9 @@
 #include "biblioteca.h"
 
 #define FIFO_FILE "/tmp/fifo_twoway"
-
+/***********************************
+ * SERVIDOR
+ ***********************************/
 int main() {
    int fd;
    char readbuf[80]; //Areglo de 80 caracteres max
@@ -22,12 +24,14 @@ int main() {
    
    /*Crea el FIFO_FILE si este no existe */
    mkfifo(FIFO_FILE, S_IFIFO|0640);
-   strcpy(end, "end");
+   strcpy(end, "end"); //se coloca al final del vector la palabra end
    //abre el archivo FIFO_FILE
    fd = open(FIFO_FILE, O_RDWR);
+   //Recorre el archivo
    while(1) {
       read_bytes = read(fd, readbuf, sizeof(readbuf));
       readbuf[read_bytes] = '\0';
+      //Anuncia que leyó un string y muestra su tamaño
       printf("FIFOSERVER: Received string: \"%s\" and length is %d\n", readbuf, (int)strlen(readbuf));
       to_end = strcmp(readbuf, end);
       
@@ -35,8 +39,11 @@ int main() {
          close(fd);
          break;
       }
+      //invoca la función reverse_string
       reverse_string(readbuf);
+      //Anuncia que envió un reverse string y muestra su tamaño
       printf("FIFOSERVER: Sending Reversed String: \"%s\" and length is %d\n", readbuf, (int) strlen(readbuf));
+      //Escribe en fd la parabra al reves dentro de readbuf
       write(fd, readbuf, strlen(readbuf));
       /*
       sleep - This is to make sure other process reads this, otherwise this

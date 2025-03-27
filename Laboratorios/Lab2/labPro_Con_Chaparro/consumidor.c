@@ -16,13 +16,17 @@
 #include <unistd.h>
 
 #define FIFO_FILE "/tmp/fifo_twoway"
+/***********************************
+ * CLIENTE
+ ***********************************/
+
 int main() {
    int fd;
    int end_process;
    int stringlen;
    int read_bytes;
-   char readbuf[80];
-   char end_str[5];
+   char readbuf[80]; //Areglo de 80 caracteres max
+   char end_str[5];  //Arreglo de 5 caracteres max
    printf("FIFO_CLIENT: Send messages, infinitely, to end enter \"end\"\n");
    fd = open(FIFO_FILE, O_CREAT|O_RDWR);
    strcpy(end_str, "end");

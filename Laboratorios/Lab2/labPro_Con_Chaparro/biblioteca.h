@@ -19,7 +19,7 @@
 #include <sys/types.h> // Para tipos de datos como pid_t
 #include <sys/stat.h>  // Para constantes como S_IFIFO
 #include <unistd.h>
-
+//Función para invertir un vector de caracteres
 void reverse_string(char *);
 
 #endif
