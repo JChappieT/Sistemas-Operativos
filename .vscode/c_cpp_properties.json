@@ -7,6 +7,11 @@
                 "G:/C++-C/mingw64/bin",  
                 "G:/C++-C/mingw64/include",
                 "G:/C++-C/usr/include",
+<<<<<<< HEAD
+=======
+                "D:/msys64/mingw64/include",
+                "D:/msys64/mingw64/bin"
+>>>>>>> 7b22accf839d387ced5bc2b341c63f91b3a48b9a
             ],
             "defines": [
                 "_DEBUG",
