@@ -6,7 +6,7 @@
                 "${workspaceFolder}/**",
                 "G:/C++-C/mingw64/bin",  
                 "G:/C++-C/mingw64/include",
-                "G:/C++-C/usr/include"
+                "G:/C++-C/usr/include",
             ],
             "defines": [
                 "_DEBUG",
