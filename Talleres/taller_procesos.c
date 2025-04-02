@@ -61,6 +61,8 @@ int main(int argc, char *argv[]) {
     int fd[2];
     pipe(fd);
 
+    int id, value;
+
     //Se crean tres identificadores de procesos
     pid_t pid1, pid2, pid3;
     //Se crea el primer proceso hijo pid1
@@ -69,6 +71,8 @@ int main(int argc, char *argv[]) {
         if ((pid2 = fork()) == 0) {
             //pid2 hace la suma del archivo00
             int sumaA = calcular_suma(arr1, N1);
+            id = 1; // Identificador para sumaA
+            write(fd[1], &id, sizeof(int));
             //pid2 escribe la suma en el pipe fd[1]
             write(fd[1], &sumaA, sizeof(int));
             exit(0);
@@ -77,6 +81,8 @@ int main(int argc, char *argv[]) {
             wait(NULL);
             //pid1 hace la suma del archivo01
             int sumaB = calcular_suma(arr2, N2);
+            id = 2; // Identificador para sumaB
+            write(fd[1], &id, sizeof(int));
             //pid1 escribe la suma en el pipe fd[1]
             write(fd[1], &sumaB, sizeof(int));
             exit(0);
@@ -87,6 +93,8 @@ int main(int argc, char *argv[]) {
             wait(NULL);
             //pid3 espera a que pid1 termine
             int sumaTotal = calcular_suma(arr1, N1) + calcular_suma(arr2, N2);
+            id = 3; // Identificador para sumaTotal
+            write(fd[1], &id, sizeof(int));
             //pid3 escribe la suma en el pipe fd[1]
             write(fd[1], &sumaTotal, sizeof(int));
             exit(0);
@@ -94,11 +102,17 @@ int main(int argc, char *argv[]) {
             //El proceso padre espera a que pid1 y pid3 terminen
             wait(NULL);
             wait(NULL);
-            int sumaA, sumaB, sumaTotal;
             //El proceso padre lee las sumas del pipe fd[0]
-            read(fd[0], &sumaA, sizeof(int));
-            read(fd[0], &sumaB, sizeof(int));
-            read(fd[0], &sumaTotal, sizeof(int));
+            int sumaA = 0, sumaB = 0, sumaTotal = 0;
+
+            for (int i = 0; i < 3; i++) {
+                read(fd[0], &id, sizeof(int));
+                read(fd[0], &value, sizeof(int));
+
+                if (id == 1) sumaA = value;
+                else if (id == 2) sumaB = value;
+                else if (id == 3) sumaTotal = value;
+            }
             //Se muestran los resultados de las sumas
             printf("Suma archivo00: %d\n", sumaA);
             printf("Suma archivo01: %d\n", sumaB);
