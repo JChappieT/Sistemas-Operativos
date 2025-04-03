@@ -1,3 +1,4 @@
+#include "biblioteca.h"
 /**************************************************************
                 Pontificia Universidad Javeriana
         Autor: Jeronimo Chaparro Tenorio
@@ -9,16 +10,6 @@
                       algoritmo clásico de multiplicación de matrices.
                           Se implementa con la Biblioteca POSIX Pthreads
 ****************************************************************/
-
-#include <stdio.h>
-#include <pthread.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <time.h>
-#include <sys/time.h>
-
-// Define el tamaño del buffer de memoria para las matrices
-#define DATA_SIZE (1024*1024*64*3)
 
 // Declaración del mutex para sincronización
 pthread_mutex_t MM_mutex;
@@ -118,62 +109,4 @@ void *mult_thread(void *variables){
         pthread_mutex_lock(&MM_mutex);
         pthread_mutex_unlock(&MM_mutex);
         pthread_exit(NULL);
-}
-
-
-int main(int argc, char *argv[]){
-        if (argc < 3){
-                printf("Ingreso de argumentos \n $./ejecutable tamMatriz numHilos\n");
-                return -1;
-        }
-
-        int SZ = atoi(argv[1]);      // Tamaño de la matriz
-        int n_threads = atoi(argv[2]); // Número de hilos
-
-        pthread_t p[n_threads];       // Array de identificadores de hilos
-        pthread_attr_t atrMM;         // Atributos de los hilos
-
-        // Inicializa las matrices en un bloque de memoria compartido
-        mA = MEM_CHUNK;
-        mB = mA + SZ * SZ;
-        mC = mB + SZ * SZ;
-
-        // Rellena las matrices con datos
-        llenar_matriz(SZ);
-        print_matrix(SZ, mA);
-        print_matrix(SZ, mB);
-
-        // Inicia la medición del tiempo
-        inicial_tiempo();
-
-        // Inicializa los atributos y el mutex
-        pthread_mutex_init(&MM_mutex, NULL);
-        pthread_attr_init(&atrMM);
-        pthread_attr_setdetachstate(&atrMM, PTHREAD_CREATE_JOINABLE);
-
-        // Crea los hilos para la multiplicación de matrices
-        for (int j = 0; j < n_threads; j++){
-                struct parametros *datos = (struct parametros *) malloc(sizeof(struct parametros));
-                datos->idH = j;
-                datos->nH  = n_threads;
-                datos->N   = SZ;
-                pthread_create(&p[j], &atrMM, mult_thread, (void *)datos);
-        }
-
-        // Espera que todos los hilos terminen
-        for (int j = 0; j < n_threads; j++)
-                pthread_join(p[j], NULL);
-
-        // Finaliza la medición del tiempo
-        final_tiempo();
-
-        // Imprime la matriz resultante
-        print_matrix(SZ, mC);
-
-        // Limpia recursos
-        pthread_attr_destroy(&atrMM);
-        pthread_mutex_destroy(&MM_mutex);
-        pthread_exit(NULL);
-
-        return 0;
 }
